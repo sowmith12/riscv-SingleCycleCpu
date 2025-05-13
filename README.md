@@ -84,7 +84,7 @@ The following image shows the single-cycle datapath of the implemented RISC-V CP
 ## Trailing Zero Count (CTZ) Instruction
 
 This implementation includes a custom instruction, `ctz` (Count Trailing Zeros). The `ctz` instruction counts the number of consecutive zero bits starting from the least significant bit (LSB) of the input register.
-
+![CTZ Simulation Waveform](Screenshot 2025-05-13 150749.png)
 ###   Verilog Implementation of CTZ in ALU
 
 ```verilog
