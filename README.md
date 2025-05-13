@@ -97,14 +97,8 @@ This implementation includes a custom instruction, `ctz` (Count Trailing Zeros).
             ALUOut = ALUOut + 1;
     end
 end
+
+
 ExplanationALU Control Signal: When the ALUCtl is 4'b1111, the ALU performs the ctz operation.Initialization: The ALUOut register, which will hold the count, is initialized to zero.Loop: The for loop iterates through the bits of the input A, starting from the LSB (bit 0) and going up to the MSB (bit 31).Check for '1':Inside the loop, the current bit A[i] is checked.If A[i] is '1', the disable count_loop statement is executed. This statement immediately terminates the loop. The count is complete.Increment Count:If A[i] is '0', the ALUOut register is incremented, indicating that another trailing zero has been found.Loop Termination:The loop continues until a '1' is encountered or all 32 bits have been checked.Result: ALUOut will contain the number of trailing zeros.Simulation ResultsThe following simulation waveform shows the execution of the ctz instruction.Waveform Explanationclk: The clock signal.start: The reset signal.A[31:0]: The input to the ALU.ALUCtl[3:0]: The ALU control signal. When it is 4'b1111, the CTZ operation is performed.ALUOut[31:0]: The output of the ALU, which shows the number of trailing zeros.zero: The zero flag.In this specific simulation:At 60ns, A is 00000000000000000000000000000010 (2 in decimal). ALUOut is 1, as there is one trailing zero.At 160ns, A is 00000000000000000000000000000100 (4 in decimal). ALUOut is 2, as there are two trailing zeros.At 240ns, A is 00000020, ALUOut is 5.How to UseClone the repository:git clone <your_github_repository_url>
 cd <your_github_repository_name>
 Open the Verilog files: Open the Verilog files in the rtl directory using a Verilog HDL editor (e.g., Vivado, ModelSim).Simulate the design: Run the SingleCycleCPU_tb.v testbench to simulate the CPU.Synthesize the design (Optional): Synthesize the design for a specific FPGA target if you want to implement it in hardware.Project Structure├───README.md
-├───rtl
-│   ├───ALU.v
-│   ├───ALUCtrl.v
-│   ├───Control.v
-│   ├───DataMemory.v
-│   ├───ImmGen.v
-│   ├───InstructionMemory.v
-│   ├───Mux2to1
